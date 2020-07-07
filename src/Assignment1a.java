@@ -1,6 +1,7 @@
 /**
  * @author Dan Jeremy Navarro
  * @title Assignment 1 question 1a
+ * @date June 6, 2020
  * Priority Queue implementation using Linked List
  */
 
@@ -51,7 +52,6 @@ class LinkedList<T> implements PriorityQueue<T> {
             data = x;
         }
 
-
         public T getData(){
             /**
              * Returns data of node
@@ -72,8 +72,7 @@ class LinkedList<T> implements PriorityQueue<T> {
         Node currentNode = new Node(payload);
         if ( listSize == 0){
             head = currentNode;
-        }
-        if (listSize != 0){
+        } else {
             tail.next = currentNode;
         }
         tail = currentNode;
@@ -110,24 +109,22 @@ class LinkedList<T> implements PriorityQueue<T> {
     }
 }
 
-class Assignment1a {
+public class Assignment1a {
     // Answer to Assignment 1 question 1a
     public static void main(String[] args) throws IsEmptyException {
         // Test Case using initial queue of [1290, 2127877, 12457, 5454]
         LinkedList<Integer> testList = new LinkedList<>();
-        testList.add(1290);
-        testList.add(2127877);
-        testList.add(12457);
-        testList.add(5454);
-        // Current queue after operations above [1290, 2127877, 12457, 5454]
+        testList.add(1);
+        testList.add(2);
+        testList.add(3);
+        testList.add(4);
 
         System.out.println(testList.deleteMin() + " Return and removed first in queue");
-        // Current queue after operation above [2127877, 12457, 5454]
+
 
         System.out.println(testList.size() + " Current size of queue");
         System.out.println(testList.getMin() + " Current head of queue");
         System.out.println(testList.deleteMin() + " Return and removed first in queue");
-        // Current queue after operation above [12457, 5454]
 
         System.out.println(testList.size() + " Current size of queue");
         System.out.println(testList.getMin() + " Current head of queue");
