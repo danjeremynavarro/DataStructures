@@ -44,6 +44,7 @@ class HashTableLinearProbed<T> {
     }
 
     public T get(String key){
+        // Takes and deletes data by replacing with a dummy node
         boolean isKeyFound = false;
         int keyHash = getHash(key);
         Node<T> keyNode;
@@ -54,7 +55,7 @@ class HashTableLinearProbed<T> {
             if (currentNode.isKey(key)){
                 keyNode = currentNode;
                 data = keyNode.getData();
-                currentNode = dummy;
+                table[keyHash] = dummy;
                 deleteNum++;
                 isKeyFound = true;
                 return data;
@@ -69,27 +70,26 @@ class HashTableLinearProbed<T> {
         return data;
     }
 
+    static class Node<T> {
+        String key;
+        T data;
 
+        Node(String k, T val){
+            key = k;
+            data = val;
+        }
 
-}
+        public boolean isKey(String k){
+            return key.equals(k);
+        }
 
-class Node<T> {
-    String key;
-    T data;
-
-    Node(String k, T val){
-        key = k;
-        data = val;
-    }
-
-    public boolean isKey(String k){
-        return key.equals(k);
-    }
-
-    public T getData(){
-        return data;
+        public T getData(){
+            return data;
+        }
     }
 }
+
+
 
 class HashTable {
     public static void main (String[] args){
