@@ -60,9 +60,9 @@ class HashTableLinearProbed<T> {
                 return data;
             } else if (currentNode == dummy) {
                 // Return a null if key doesn't exist
-                keyHash++;
-            } else {
                 isKeyFound = true;
+            } else {
+                keyHash++;
             }
         }
 
@@ -94,11 +94,13 @@ class Node<T> {
 class HashTable {
     public static void main (String[] args){
         HashTableLinearProbed<Integer> test = new HashTableLinearProbed<>(Integer.class, 20);
-        test.put("Test1", 1);
-        test.put("vcvb576", 2);
-        test.put("8887993", 2);
-        test.put("Test4", 2);
-        test.put("Test5", 2);
-        test.put("456", 2);
+        test.put("Test1", 123331);
+        test.put("vcvb576", 23333);
+        test.put("8887993", 244444);
+        test.put("Test4", 2553456);
+        test.put("Test5", 2121313);
+        test.put("456", 232);
+        System.out.println(test.get("456"));
+        System.out.println(test.get("Test1"));
     }
 }
