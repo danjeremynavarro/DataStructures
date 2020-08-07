@@ -96,8 +96,8 @@ class HashTableLinearProbed<T> {
     }
 
     static class Node<T> {
-        String key;
-        T data;
+        private String key;
+        private T data;
 
         Node(String k, T val){
             key = k;

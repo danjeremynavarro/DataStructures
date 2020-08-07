@@ -9,7 +9,7 @@ public class testHashTable {
     private static final Random randomizer = new Random();
 
     public static void main(String[] args){
-        int tableSize = 20;
+        int tableSize = 1000;
         HashTableLinearProbed<Integer> testTable = new HashTableLinearProbed<>();
         String[] keys = new String[tableSize];
         Integer[] values = new Integer[tableSize];
