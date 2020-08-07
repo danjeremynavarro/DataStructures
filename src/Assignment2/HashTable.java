@@ -1,18 +1,14 @@
 package Assignment2;
 import java.lang.Math;
 class HashTableLinearProbed<T> {
-    /**
-     * This implementation of the hashtable with linear probing demonstrates what happens
-     * if there are too many collisions. Setting the random hash to return values of
-     * of range 13 the table is guaranteed to run in linear time on any table size that is
-     * more than 13
-     */
 
     private Node<T> dummy = new Node<T>(null, null);
 
+    private Class<T> dtype;
+
     private Node<T>[] table;
 
-    private int tableSize = 15;
+    private int tableSize;
 
     private int deleteNum = 0;
 
@@ -21,21 +17,18 @@ class HashTableLinearProbed<T> {
     private static int prime = 13;
 
     @SuppressWarnings("uncheked")
-    HashTableLinearProbed(){
-        table = new Node[tableSize];
+    HashTableLinearProbed(Class<T> clazz, int size){
+        tableSize = size;
+        table = new Node[size];
     }
 
-    private int getHash(String key){
+    private static int getHash(String key){
         // Getting the absolute value of the hashcode and mixed with prime.
         double builtInHash = Math.abs(key.hashCode());
         return (int)builtInHash % prime;
     }
 
     public void put(String key, T value){
-        if (needResize()){
-            resize();
-        }
-
         boolean isKeyFound = false;
         int keyHash = getHash(key);
         while(!isKeyFound){
@@ -59,13 +52,11 @@ class HashTableLinearProbed<T> {
 
         while(!isKeyFound){
             Node<T> currentNode = table[keyHash];
-
-            if (currentNode.isKey(key) || currentNode != null){
+            if (currentNode.isKey(key)){
                 keyNode = currentNode;
                 data = keyNode.getData();
                 table[keyHash] = dummy;
                 deleteNum++;
-                nonNull--;
                 isKeyFound = true;
                 return data;
             } else if (currentNode == dummy) {
@@ -79,22 +70,6 @@ class HashTableLinearProbed<T> {
         return data;
     }
 
-    private void resize(){
-        int newTableSize = tableSize * 2;
-        Node<T>[] newTable = new Node[newTableSize];
-
-        for(int i = 0; i < tableSize; i++){
-            newTable[i] = table[i];
-        }
-
-        table = newTable;
-        tableSize = newTableSize;
-    }
-
-    private boolean needResize(){
-        return deleteNum + nonNull > tableSize / 2;
-    }
-
     static class Node<T> {
         String key;
         T data;
@@ -105,9 +80,6 @@ class HashTableLinearProbed<T> {
         }
 
         public boolean isKey(String k){
-            if (key == null){
-                return false;
-            }
             return key.equals(k);
         }
 
@@ -117,3 +89,18 @@ class HashTableLinearProbed<T> {
     }
 }
 
+
+
+class HashTable {
+    public static void main (String[] args){
+        HashTableLinearProbed<Integer> test = new HashTableLinearProbed<>(Integer.class, 20);
+        test.put("Test1", 123331);
+        test.put("vcvb576", 23333);
+        test.put("8887993", 244444);
+        test.put("Test4", 2553456);
+        test.put("Test5", 2121313);
+        test.put("456", 232);
+        System.out.println(test.get("456"));
+        System.out.println(test.get("Test1"));
+    }
+}
