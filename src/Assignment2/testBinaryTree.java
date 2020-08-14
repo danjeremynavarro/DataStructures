@@ -1,5 +1,7 @@
 package Assignment2;
 
+import java.util.LinkedList;
+
 public class testBinaryTree {
 
     public static void main (String[] args){
@@ -13,7 +15,12 @@ public class testBinaryTree {
         test.add(13);
         test.add(1);
         test.add(20);
-
+        LinkedList<Integer> sorted = test.getInorder();
+        System.out.println(test.getInorderNext(10));
+        sorted = test.getPreOrder();
+        System.out.println(test.getPreOrderNext(15));
+        sorted = test.getPostOrder();
+        System.out.println(test.getPostOrderNext(15));
     }
 
 }

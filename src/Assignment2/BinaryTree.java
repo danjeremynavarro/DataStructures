@@ -1,4 +1,10 @@
 package Assignment2;
+/**
+ * Binary tree that has methods getPreOrder, getInorder, getPostOrder that returns a list
+ * according to the traversal method
+ */
+
+import java.util.LinkedList;
 
 class BinaryTree<T extends Comparable<T>>{
 
@@ -25,15 +31,94 @@ class BinaryTree<T extends Comparable<T>>{
         return n;
     }
 
-    private Node<T> traverseLeft(Node<T> currentNode){
-        while(currentNode.left != null){
-            traverseLeft(currentNode.left);
+    private T returnSortedNextValue(int sortMethod, T data){
+        /**
+         * @param sortMethod - 0 for inOrder , 1 for preOrder, 2 for postOrder
+         */
+
+        LinkedList<T> container = new LinkedList<>();
+        switch(sortMethod){
+            case 0:
+                inOrder(root, container);
+                break;
+            case 1:
+                preOrder(root, container);
+                break;
+            case 2:
+                postOrder(root, container);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + sortMethod);
         }
-        return currentNode;
+
+        int elementLoc = container.indexOf(data) + 1;
+        return container.get(elementLoc);
     }
 
+    public LinkedList<T> getInorder(){
+        LinkedList<T> container = new LinkedList<>();
+        return inOrder(root, container);
+    }
 
-    static class Node<T extends Comparable<T>>{
+    private LinkedList<T> inOrder(Node d, LinkedList<T> container){
+        if (d == null){
+            return container;
+        }
+
+        inOrder(d.left, container);
+        container.add((T) d.data);
+        inOrder(d.right, container);
+        return container;
+    }
+
+    public T getInorderNext(T d){
+        return returnSortedNextValue(0, d);
+    }
+
+    public LinkedList<T> getPreOrder(){
+        LinkedList<T> container = new LinkedList<>();
+        preOrder(root, container);
+        return container;
+    }
+
+    private LinkedList<T> preOrder(Node<T> d, LinkedList<T> container){
+        if (d == null){
+            return container;
+        }
+
+        container.add(d.data);
+
+        preOrder(d.left, container);
+        preOrder(d.right, container);
+        return container;
+    }
+
+    public T getPreOrderNext(T d){
+        return returnSortedNextValue(1, d);
+    }
+
+    public LinkedList<T> getPostOrder(){
+        LinkedList<T> container = new LinkedList<>();
+        postOrder(root, container);
+        return container;
+    }
+
+    private LinkedList<T> postOrder(Node<T> d, LinkedList<T> container){
+        if (d == null){
+            return container;
+        }
+
+        postOrder(d.left, container);
+        postOrder(d.right, container);
+        container.add(d.data);
+        return container;
+    }
+
+    public T getPostOrderNext(T d){
+        return returnSortedNextValue(2, d);
+    }
+
+     class Node<T extends Comparable<T>>{
         protected T data;
         protected Node<T> left;
         protected  Node<T> right;
