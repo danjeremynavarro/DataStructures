@@ -118,6 +118,19 @@ class BinaryTree<T extends Comparable<T>>{
         return returnSortedNextValue(2, d);
     }
 
+    public boolean isBinaryTree(){
+        return recurseTree(root);
+    }
+
+    private boolean recurseTree(Node<T> d){
+        if (d == null){
+            return true;
+        } else if (recurseTree(d) && d.left.data.compareTo(d.data) > 0) {
+            return true;
+        } else return recurseTree(d) && d.left.data.compareTo(d.data) < 0;
+    }
+
+
      class Node<T extends Comparable<T>>{
         protected T data;
         protected Node<T> left;
