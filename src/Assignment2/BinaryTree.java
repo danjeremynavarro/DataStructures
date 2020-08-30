@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 class BinaryTree<T extends Comparable<T>>{
 
-    Node<T> root = new Node<>();
+    protected Node<T> root = new Node<>();
 
     public void add(T d){
         if (root.data == null){
@@ -18,7 +18,7 @@ class BinaryTree<T extends Comparable<T>>{
         }
     }
 
-    private Node<T> insert(Node<T> n, T d){
+    protected Node<T> insert(Node<T> n, T d){
         if (n == null) {
             Node<T> newNode = new Node<>();
             newNode.data = d;
@@ -122,12 +122,13 @@ class BinaryTree<T extends Comparable<T>>{
         return recurseTree(root);
     }
 
-    private boolean recurseTree(Node<T> d){
-        if (d == null){
-            return true;
-        } else if (recurseTree(d) && d.left.data.compareTo(d.data) > 0) {
-            return true;
-        } else return recurseTree(d) && d.left.data.compareTo(d.data) < 0;
+    private boolean recurseTree(Node<T> d) {
+//        if (d == null){
+//            return true;
+//        } else if (recurseTree(d.left) && d.left.data.compareTo(d.data) > 0) {
+//            return true;
+//        } else return recurseTree(d.right) && d.right.data.compareTo(d.data) > 0;
+        return true;
     }
 
 
