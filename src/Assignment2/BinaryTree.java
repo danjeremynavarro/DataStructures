@@ -35,7 +35,6 @@ class BinaryTree<T extends Comparable<T>>{
         /**
          * @param sortMethod - 0 for inOrder , 1 for preOrder, 2 for postOrder
          */
-
         LinkedList<T> container = new LinkedList<>();
         switch(sortMethod){
             case 0:
@@ -50,7 +49,6 @@ class BinaryTree<T extends Comparable<T>>{
             default:
                 throw new IllegalStateException("Unexpected value: " + sortMethod);
         }
-
         int elementLoc = container.indexOf(data) + 1;
         return container.get(elementLoc);
     }
@@ -64,7 +62,6 @@ class BinaryTree<T extends Comparable<T>>{
         if (d == null){
             return container;
         }
-
         inOrder(d.left, container);
         container.add((T) d.data);
         inOrder(d.right, container);
@@ -85,9 +82,7 @@ class BinaryTree<T extends Comparable<T>>{
         if (d == null){
             return container;
         }
-
         container.add(d.data);
-
         preOrder(d.left, container);
         preOrder(d.right, container);
         return container;
@@ -107,7 +102,6 @@ class BinaryTree<T extends Comparable<T>>{
         if (d == null){
             return container;
         }
-
         postOrder(d.left, container);
         postOrder(d.right, container);
         container.add(d.data);
@@ -119,16 +113,22 @@ class BinaryTree<T extends Comparable<T>>{
     }
 
     public boolean isBinaryTree(){
-        return recurseTree(root);
+        return recurseTree(root, null, null);
     }
 
-    private boolean recurseTree(Node<T> d) {
-//        if (d == null){
-//            return true;
-//        } else if (recurseTree(d.left) && d.left.data.compareTo(d.data) > 0) {
-//            return true;
-//        } else return recurseTree(d.right) && d.right.data.compareTo(d.data) > 0;
-        return true;
+    private boolean recurseTree(Node<T> root, Node left, Node right) {
+        if (root == null)
+            return true;
+
+        if ( left != null && root.data.compareTo((T) left.data) < 0){
+            return false;
+        }
+
+        if ( right != null && root.data.compareTo((T) right.data) > 0){
+            return false;
+        }
+
+        return (recurseTree(root.left, left, root) && recurseTree(root.right, root , right));
     }
 
 
