@@ -9,6 +9,9 @@ public class testHashTable {
     private static final Random randomizer = new Random();
 
     public static void main(String[] args){
+        /**
+         * Answer to question 3 hash table implementation
+         */
         int tableSize = 1000;
         HashTableLinearProbed<Integer> testTable = new HashTableLinearProbed<>();
         String[] keys = new String[tableSize];

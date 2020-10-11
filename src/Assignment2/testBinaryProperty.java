@@ -2,6 +2,10 @@ package Assignment2;
 
 public class testBinaryProperty {
     public static void main (String[] args){
+        /**
+         * Answer to question 2
+         * A method that checks if the binary tree satisfies the search order property
+         */
         BinaryTree<Integer> test = new BinaryTree<>();
         test.add(10);
         test.add(2);

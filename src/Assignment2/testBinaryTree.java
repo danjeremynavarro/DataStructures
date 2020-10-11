@@ -5,6 +5,10 @@ import java.util.LinkedList;
 public class testBinaryTree {
 
     public static void main (String[] args){
+        /**
+         * Answer to question 1
+         * Worst case run time for all methods is O(n)
+         */
         BinaryTree<Integer> test = new BinaryTree<>();
         test.add(10);
         test.add(2);

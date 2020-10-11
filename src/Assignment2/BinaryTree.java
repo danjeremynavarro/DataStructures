@@ -120,11 +120,11 @@ class BinaryTree<T extends Comparable<T>>{
         if (root == null)
             return true;
 
-        if ( left != null && root.data.compareTo((T) left.data) < 0){
+        if (left != null && root.data.compareTo((T) left.data) < 0){
             return false;
         }
 
-        if ( right != null && root.data.compareTo((T) right.data) > 0){
+        if (right != null && root.data.compareTo((T) right.data) > 0){
             return false;
         }
 
