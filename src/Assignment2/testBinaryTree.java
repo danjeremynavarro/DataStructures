@@ -8,8 +8,10 @@ public class testBinaryTree {
         /**
          * Answer to question 1
          * Worst case run time for all methods is O(n)
+         * This is all the test case for question 5.
+         * Use Binary tree in test plan to check results
          */
-        BinaryTree<Integer> test = new BinaryTree<>();
+        NumberStore<Integer> test = new NumberStore<>();
         test.add(10);
         test.add(2);
         test.add(4);
@@ -19,11 +21,11 @@ public class testBinaryTree {
         test.add(13);
         test.add(1);
         test.add(20);
-        LinkedList<Integer> sorted = test.getInorder();
+        LinkedList<Integer> sorted = test.getInOrderNumber();
         System.out.println(test.getInorderNext(10));
-        sorted = test.getPreOrder();
+        sorted = test.getPreOrderNumber();
         System.out.println(test.getPreOrderNext(15));
-        sorted = test.getPostOrder();
+        sorted = test. getPostOrderNumber();
         System.out.println(test.getPostOrderNext(15));
     }
 

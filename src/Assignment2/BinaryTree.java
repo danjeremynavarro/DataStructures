@@ -1,7 +1,14 @@
+/**
+ * Assignment 2
+ * Dan Jeremy Navarro
+ * Oct 28, 2020
+ */
+
 package Assignment2;
 /**
  * Binary tree that has methods getPreOrder, getInorder, getPostOrder that returns a list
- * according to the traversal method
+ * according to the traversal method. This is a simple binary method that doesn't implement
+ * any self balancing methods.
  */
 
 import java.util.LinkedList;
@@ -11,6 +18,10 @@ class BinaryTree<T extends Comparable<T>>{
     protected Node<T> root = new Node<>();
 
     public void add(T d){
+        /**
+         * Adds data to binary tree> Data must implement comparable interface
+         * @param d - any data that imeplements comparable interface
+         */
         if (root.data == null){
             root.data = d;
         } else {
@@ -117,6 +128,10 @@ class BinaryTree<T extends Comparable<T>>{
     }
 
     private boolean recurseTree(Node<T> root, Node left, Node right) {
+        /**
+         * Goes through the binary tree and compares the data ensuring binary tree structure
+         * is followed
+         */
         if (root == null)
             return true;
 
@@ -130,7 +145,6 @@ class BinaryTree<T extends Comparable<T>>{
 
         return (recurseTree(root.left, left, root) && recurseTree(root.right, root , right));
     }
-
 
      class Node<T extends Comparable<T>>{
         protected T data;

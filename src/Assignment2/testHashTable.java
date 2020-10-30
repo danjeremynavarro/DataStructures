@@ -1,3 +1,9 @@
+/**
+ * Assignment 2
+ * Dan Jeremy Navarro
+ * Oct 28, 2020
+ */
+
 package Assignment2;
 
 import java.util.Random;
@@ -49,6 +55,22 @@ public class testHashTable {
 
         System.out.println("Test completed");
 
+        System.out.println("Creating new HashTable");
+        HashTableLinearProbed<Integer> testHashTable = new HashTableLinearProbed<>();
+        testHashTable.put("1", 1);
+        testHashTable.put("5", 5);
+        testHashTable.put("21", 21);
+        testHashTable.put("26", 26);
+        testHashTable.put("39", 39);
+        testHashTable.put("14", 14);
+        testHashTable.put("15", 15);
+        testHashTable.put("16", 16);
+        testHashTable.put("17", 17);
+        testHashTable.put("18", 18);
+        testHashTable.put("19", 19);
+        testHashTable.put("20", 20);
+        testHashTable.put("111", 111);
+        testHashTable.put("145", 146);
     }
 
     private static String generateRandomKey(){

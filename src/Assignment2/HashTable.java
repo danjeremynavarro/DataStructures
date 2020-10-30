@@ -1,3 +1,9 @@
+/**
+ * Assignment 2
+ * Dan Jeremy Navarro
+ * Oct 28, 2020
+ */
+
 package Assignment2;
 import java.lang.Math;
 class HashTableLinearProbed<T> {
@@ -17,7 +23,7 @@ class HashTableLinearProbed<T> {
     private int deleteNum = 0;
 
     private int nonNull = 0;
-
+    // Uses k mod 13 to calculate location in hash table
     private static int prime = 13;
 
     @SuppressWarnings("uncheked")
@@ -32,6 +38,11 @@ class HashTableLinearProbed<T> {
     }
 
     public void put(String key, T value){
+        /**
+         * Inserts a key value pair into hash table
+         * @param key - String that serves as identifier
+         * @param value - value to be inserted with the key
+         */
         if (needResize()){
             resize();
         }
@@ -51,7 +62,11 @@ class HashTableLinearProbed<T> {
     }
 
     public T get(String key){
-        // Takes and deletes data by replacing with a dummy node
+        /**
+         * Returns value that is paired with given key. Will delete the
+         * key.
+         * @param key - identifier of data
+         */
         boolean isKeyFound = false;
         int keyHash = getHash(key);
         Node<T> keyNode;
